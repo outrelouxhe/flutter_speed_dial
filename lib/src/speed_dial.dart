@@ -264,15 +264,15 @@ class _SpeedDialState extends State<SpeedDial>
      @override
  void dispose() {
    if (overlayEntry != null) {
-     if (overlayEntry!.mounted) {
-       overlayEntry!.remove();
+     if (overlayEntry?.mounted ?? false) {
+       overlayEntry?.remove();
        overlayEntry = null;
      }
-     overlayEntry!.dispose();
+     overlayEntry?.dispose();
    }
    if (widget.renderOverlay && backgroundOverlay != null) {
-     if (backgroundOverlay!.mounted) backgroundOverlay!.remove();
-     backgroundOverlay!.dispose();
+     if (backgroundOverlay?.mounted ?? false) backgroundOverlay?.remove();
+     backgroundOverlay?.dispose();
    }
    _controller.dispose();
    widget.openCloseDial?.removeListener(_onOpenCloseDial);
