@@ -245,7 +245,7 @@ class _SpeedDialState extends State<SpeedDial>
     });
     _checkChildren();
   }
-
+/*
   @override
   void dispose() {
     if (overlayEntry != null) {
@@ -259,7 +259,25 @@ class _SpeedDialState extends State<SpeedDial>
     _controller.dispose();
     widget.openCloseDial?.removeListener(_onOpenCloseDial);
     super.dispose();
-  }
+  }*/
+
+     @override
+ void dispose() {
+   if (overlayEntry != null) {
+     if (overlayEntry!.mounted) {
+       overlayEntry!.remove();
+       overlayEntry = null;
+     }
+     overlayEntry!.dispose();
+   }
+   if (widget.renderOverlay && backgroundOverlay != null) {
+     if (backgroundOverlay!.mounted) backgroundOverlay!.remove();
+     backgroundOverlay!.dispose();
+   }
+   _controller.dispose();
+   widget.openCloseDial?.removeListener(_onOpenCloseDial);
+   super.dispose();
+ }
 
   @override
   void didUpdateWidget(SpeedDial oldWidget) {
